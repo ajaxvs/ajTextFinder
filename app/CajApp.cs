@@ -7,7 +7,7 @@ namespace ajTextFinder.app {
     class CajApp {
         //================================================================================
         public const string appName = "ajTextFinder";
-        public const string appAbout = "v 0.1" +
+        public const string appAbout = "v 20-04-09" +
                                        "\r\n\r\n(c) ajaxvs@gmail.com";
         //================================================================================
         static private FajMain frmMain = null;

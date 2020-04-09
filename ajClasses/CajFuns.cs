@@ -18,12 +18,19 @@ namespace ajClasses {
         }
         //================================================================================
         static public string getTimeStamp(bool withMs = true, string separator = ":") {
-            return
-                DateTime.Now.Hour.ToString("D2") + separator +
-                DateTime.Now.Minute.ToString("D2") + separator +
-                DateTime.Now.Second.ToString("D2") +
-                (withMs ? "." + DateTime.Now.Millisecond.ToString("D3") : "") +
-                ". ";
+            var dt = DateTime.Now;
+            var sb = new StringBuilder();
+            sb.Append(dt.Hour.ToString("D2"));
+            sb.Append(separator);
+            sb.Append(dt.Minute.ToString("D2"));
+            sb.Append(separator);
+            sb.Append(dt.Second.ToString("D2"));
+            sb.Append(".");
+            if (withMs) {
+                sb.Append(dt.Millisecond.ToString("D3"));
+                sb.Append(".");
+            }
+            return sb.ToString();
         }
         //================================================================================
         static public void appExit() {

@@ -120,12 +120,13 @@ namespace ajTextFinder.app.view {
             }
             if (config == null) return;
 
-            config.write("txtPath", txtPath.Text);
-            config.write("txtFilePattern", txtFilePattern.Text);
-            config.write("chkWithSubdirs", chkWithSubdirs.Checked.ToString());
-            config.write("txtFind", txtFind.Text);
-            config.write("txtReplace", txtReplace.Text);
-            config.write("chkReplace", chkReplace.Checked.ToString());
+            config.write("txtPath", txtPath.Text, false);
+            config.write("txtFilePattern", txtFilePattern.Text, false);
+            config.write("chkWithSubdirs", chkWithSubdirs.Checked.ToString(), false);
+            config.write("txtFind", txtFind.Text, false);
+            config.write("txtReplace", txtReplace.Text, false);
+            config.write("chkReplace", chkReplace.Checked.ToString(), false);
+            config.flush();
 
             setResult("finding files...");
             butStart.Text = "In process...";
@@ -220,21 +221,7 @@ namespace ajTextFinder.app.view {
         }
         //================================================================================
         private void lstResults_MouseDoubleClick(object sender, MouseEventArgs e) {
-            try {
-                if (aResults == null) return;
-
-                var aSelected = lstResults.SelectedIndices;
-                if (aSelected == null) return;
-
-                int i = aSelected[0];
-                if (i == -1) return;
-                if (i >= aResults.Count) return;
-
-                //open with default app:
-                System.Diagnostics.Process.Start(aResults[i].filePath);
-            } catch (Exception ex) {
-                Debug.WriteLine(ex);
-            }
+            openResultFile();
         }
         //================================================================================
         private void butLocatePath_Click(object sender, EventArgs e) {
@@ -264,6 +251,81 @@ namespace ajTextFinder.app.view {
         //================================================================================
         private void chkReplace_CheckedChanged(object sender, EventArgs e) {
             txtReplace.Enabled = chkReplace.Checked;
+        }
+        //================================================================================
+        private void mnuResultsOpen_Click(object sender, EventArgs e) {
+            openResultFile();
+        }
+        //================================================================================
+        private string getSelectedFilePath() {
+            string filePath = "";
+            if (aResults == null) return filePath;
+
+            var aSelected = lstResults.SelectedIndices;
+            if (aSelected == null || aSelected.Count == 0) return filePath;
+
+            int i = aSelected[0];
+            if (i == -1) return filePath;
+            if (i >= aResults.Count) return filePath;
+
+            return aResults[i].filePath;
+        }
+        //================================================================================
+        private void openResultFile() {
+            try {
+                string filePath = getSelectedFilePath();
+                if (filePath == "") return;
+
+                //open with default app:
+                System.Diagnostics.Process.Start(filePath);
+            } catch (Exception ex) {
+                Debug.WriteLine(ex);
+            }
+        }
+        //================================================================================
+        private void mnuResultsLocateWithExplorer_Click(object sender, EventArgs e) {
+            try {
+                string filePath = getSelectedFilePath();
+                if (filePath == "") return;
+
+                string arguments = "";
+
+                //the file could be already deleted:
+                if (File.Exists(filePath)) {
+                    //"Show Selected":
+                    arguments = "/select, \"" + filePath + "\"";
+                } else {
+                    //"Show Folder":
+                    arguments = Path.GetDirectoryName(filePath);
+                    if (!Directory.Exists(arguments)) {
+                        setResult("Can't find folder: " + arguments);
+                        return;
+                    }
+                }
+
+                //start new explorer process:                
+                Process.Start("explorer.exe", arguments);
+
+                //TODO: kill started explorer.exe instance when it's done
+            } catch (Exception ex) {
+                Debug.WriteLine(ex);
+            }
+        }
+        //================================================================================
+        private void mnuResultsCopyPathToClipboard_Click(object sender, EventArgs e) {
+            string filePath = getSelectedFilePath();
+            if (filePath == "") return;
+
+            Clipboard.SetText(filePath);
+        }
+        //================================================================================
+        private void resultsRmbMenu_Opened(object sender, EventArgs e) {
+            string filePath = getSelectedFilePath();
+            bool isEnabled = (filePath != "");
+
+            mnuResultsOpen.Enabled = isEnabled;
+            mnuResultsCopyPathToClipboard.Enabled = isEnabled;
+            mnuResultsLocateWithExplorer.Enabled = isEnabled;
         }
         //================================================================================
     }

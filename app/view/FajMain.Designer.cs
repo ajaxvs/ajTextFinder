@@ -51,8 +51,13 @@
             this.line = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pos = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.originalLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.resultsRmbMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuResultsOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuResultsCopyPathToClipboard = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuResultsLocateWithExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.notifyMenu1.SuspendLayout();
+            this.resultsRmbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -239,6 +244,7 @@
             this.line,
             this.pos,
             this.originalLine});
+            this.lstResults.ContextMenuStrip = this.resultsRmbMenu;
             this.lstResults.Location = new System.Drawing.Point(13, 194);
             this.lstResults.Name = "lstResults";
             this.lstResults.Size = new System.Drawing.Size(1157, 406);
@@ -263,6 +269,38 @@
             // 
             this.originalLine.Text = "original line text";
             this.originalLine.Width = 850;
+            // 
+            // resultsRmbMenu
+            // 
+            this.resultsRmbMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.resultsRmbMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuResultsOpen,
+            this.mnuResultsCopyPathToClipboard,
+            this.mnuResultsLocateWithExplorer});
+            this.resultsRmbMenu.Name = "resultsRmbMenu";
+            this.resultsRmbMenu.Size = new System.Drawing.Size(237, 104);
+            this.resultsRmbMenu.Opened += new System.EventHandler(this.resultsRmbMenu_Opened);
+            // 
+            // mnuResultsOpen
+            // 
+            this.mnuResultsOpen.Name = "mnuResultsOpen";
+            this.mnuResultsOpen.Size = new System.Drawing.Size(236, 24);
+            this.mnuResultsOpen.Text = "Open";
+            this.mnuResultsOpen.Click += new System.EventHandler(this.mnuResultsOpen_Click);
+            // 
+            // mnuResultsCopyPathToClipboard
+            // 
+            this.mnuResultsCopyPathToClipboard.Name = "mnuResultsCopyPathToClipboard";
+            this.mnuResultsCopyPathToClipboard.Size = new System.Drawing.Size(236, 24);
+            this.mnuResultsCopyPathToClipboard.Text = "Copy Path To Clipboard";
+            this.mnuResultsCopyPathToClipboard.Click += new System.EventHandler(this.mnuResultsCopyPathToClipboard_Click);
+            // 
+            // mnuResultsLocateWithExplorer
+            // 
+            this.mnuResultsLocateWithExplorer.Name = "mnuResultsLocateWithExplorer";
+            this.mnuResultsLocateWithExplorer.Size = new System.Drawing.Size(236, 24);
+            this.mnuResultsLocateWithExplorer.Text = "Locate with Explorer";
+            this.mnuResultsLocateWithExplorer.Click += new System.EventHandler(this.mnuResultsLocateWithExplorer_Click);
             // 
             // FajMain
             // 
@@ -296,6 +334,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.notifyMenu1.ResumeLayout(false);
+            this.resultsRmbMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +368,9 @@
         private System.Windows.Forms.ColumnHeader line;
         private System.Windows.Forms.ColumnHeader pos;
         private System.Windows.Forms.ColumnHeader originalLine;
+        private System.Windows.Forms.ContextMenuStrip resultsRmbMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuResultsOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuResultsLocateWithExplorer;
+        private System.Windows.Forms.ToolStripMenuItem mnuResultsCopyPathToClipboard;
     }
 }
