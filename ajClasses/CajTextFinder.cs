@@ -179,9 +179,9 @@ namespace ajClasses {
                     File.WriteAllText(filePath, sOut, encoding);
                 }
 
-                //after all checks:
-                iFiles++;
-                iLines += aLines.Length;
+                //stats after checks:
+                Interlocked.Add(ref iFiles, 1);
+                Interlocked.Add(ref iLines, aLines.Length);
 
                 //progress?:
                 if (options.onProgress != null) {
@@ -194,7 +194,7 @@ namespace ajClasses {
                                  //.Stop() doesn't really stop current iterations, nn.
                 }
             } catch (Exception ex) {
-                iErrors++;
+                Interlocked.Add(ref iErrors, 1);
                 Debug.WriteLine(ex);
             }
         }

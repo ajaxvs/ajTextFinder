@@ -67,7 +67,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1182, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(782, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -133,7 +133,7 @@
             // 
             // butStart
             // 
-            this.butStart.Location = new System.Drawing.Point(1042, 615);
+            this.butStart.Location = new System.Drawing.Point(641, 615);
             this.butStart.Name = "butStart";
             this.butStart.Size = new System.Drawing.Size(128, 48);
             this.butStart.TabIndex = 7;
@@ -172,39 +172,39 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(250, 45);
+            this.txtPath.Location = new System.Drawing.Point(200, 45);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(850, 22);
+            this.txtPath.Size = new System.Drawing.Size(496, 22);
             this.txtPath.TabIndex = 1;
             // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(250, 123);
+            this.txtFind.Location = new System.Drawing.Point(200, 123);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(920, 22);
+            this.txtFind.Size = new System.Drawing.Size(569, 22);
             this.txtFind.TabIndex = 4;
             // 
             // txtReplace
             // 
-            this.txtReplace.Location = new System.Drawing.Point(250, 151);
+            this.txtReplace.Location = new System.Drawing.Point(200, 151);
             this.txtReplace.Name = "txtReplace";
-            this.txtReplace.Size = new System.Drawing.Size(920, 22);
+            this.txtReplace.Size = new System.Drawing.Size(569, 22);
             this.txtReplace.TabIndex = 6;
             // 
             // lblResults
             // 
             this.lblResults.Location = new System.Drawing.Point(20, 615);
             this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(1008, 48);
+            this.lblResults.Size = new System.Drawing.Size(600, 48);
             this.lblResults.TabIndex = 10;
             this.lblResults.Text = "...";
             this.lblResults.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtFilePattern
             // 
-            this.txtFilePattern.Location = new System.Drawing.Point(250, 72);
+            this.txtFilePattern.Location = new System.Drawing.Point(200, 72);
             this.txtFilePattern.Name = "txtFilePattern";
-            this.txtFilePattern.Size = new System.Drawing.Size(920, 22);
+            this.txtFilePattern.Size = new System.Drawing.Size(569, 22);
             this.txtFilePattern.TabIndex = 2;
             this.txtFilePattern.Text = "*.*";
             // 
@@ -229,7 +229,7 @@
             // 
             // butLocatePath
             // 
-            this.butLocatePath.Location = new System.Drawing.Point(1106, 45);
+            this.butLocatePath.Location = new System.Drawing.Point(705, 44);
             this.butLocatePath.Name = "butLocatePath";
             this.butLocatePath.Size = new System.Drawing.Size(64, 22);
             this.butLocatePath.TabIndex = 0;
@@ -247,7 +247,7 @@
             this.lstResults.ContextMenuStrip = this.resultsRmbMenu;
             this.lstResults.Location = new System.Drawing.Point(13, 194);
             this.lstResults.Name = "lstResults";
-            this.lstResults.Size = new System.Drawing.Size(1157, 406);
+            this.lstResults.Size = new System.Drawing.Size(756, 406);
             this.lstResults.TabIndex = 12;
             this.lstResults.UseCompatibleStateImageBehavior = false;
             // 
@@ -268,7 +268,7 @@
             // originalLine
             // 
             this.originalLine.Text = "original line text";
-            this.originalLine.Width = 850;
+            this.originalLine.Width = 455;
             // 
             // resultsRmbMenu
             // 
@@ -278,7 +278,7 @@
             this.mnuResultsCopyPathToClipboard,
             this.mnuResultsLocateWithExplorer});
             this.resultsRmbMenu.Name = "resultsRmbMenu";
-            this.resultsRmbMenu.Size = new System.Drawing.Size(237, 104);
+            this.resultsRmbMenu.Size = new System.Drawing.Size(237, 76);
             this.resultsRmbMenu.Opened += new System.EventHandler(this.resultsRmbMenu_Opened);
             // 
             // mnuResultsOpen
@@ -304,9 +304,8 @@
             // 
             // FajMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 675);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(782, 675);
             this.Controls.Add(this.lstResults);
             this.Controls.Add(this.butLocatePath);
             this.Controls.Add(this.chkWithSubdirs);
