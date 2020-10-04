@@ -190,11 +190,13 @@ namespace ajTextFinder.app.view {
         private void lstResults_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
             if (e == null) {
                 Debug.WriteLine("RetrieveVirtualItemEventArgs is null");
+                e.Item = new ListViewItem("?");
                 return;
             }
 
             if (e.ItemIndex < 0 || e.ItemIndex >= aResults.Count) {
                 Debug.WriteLine("incorrect ItemIndex = " + e.ItemIndex);
+                e.Item = new ListViewItem("?");
                 return;
             }
 

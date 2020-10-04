@@ -7,8 +7,9 @@ namespace ajTextFinder.app {
     class CajApp {
         //================================================================================
         public const string appName = "ajTextFinder";
-        public const string appAbout = "v 20-05-15" +
-                                       "\r\n\r\n(c) ajaxvs@gmail.com";
+        static public readonly string appAbout = "v 20-10-04" +
+                                                 Environment.NewLine + Environment.NewLine +
+                                                 "(c) ajaxvs@gmail.com";
         //================================================================================
         static private FajMain frmMain = null;
         static private string dataDir = "";

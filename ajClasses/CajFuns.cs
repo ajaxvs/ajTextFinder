@@ -81,6 +81,7 @@ namespace ajClasses {
             try {
                 using (var fs = File.OpenRead(path)) {
                     //find new line charater(s):
+                    char cz = '\0';
                     char c0 = '\0';
                     for (int i = 0; i < maxReadBytesPerLine; i++) {
                         int b = fs.ReadByte();
@@ -88,14 +89,19 @@ namespace ajClasses {
                         char c1 = (char)b;
                         if (c1 == '\n') {
                             if (c0 == '\r') {
-                                newLine = "\r\n"; //Windows
+                                newLine = "\r\n"; //Windows 1byte text
                             } else {
-                                newLine = "\n"; //Unix
+                                if (cz == '\r') {
+                                    newLine = "\r\n"; //Windows 2bytes text
+                                } else {
+                                    newLine = "\n"; //Unix
+                                }
                             }
                             if (i > 4) { //wait bom
                                 return;
                             }
                         }
+                        cz = c0;
                         c0 = c1;
                         if (i < 4) {
                             bom[i] = (byte)b;
